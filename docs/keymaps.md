@@ -19,7 +19,6 @@ Leader is space. Mode is `n` for normal, `v` for visual, `x` for visual without 
 | `Q` | n | Does nothing |
 | `<leader>wr` | n | Replace the word under the cursor in the whole file |
 | `<leader>x` | n | Make the current file executable |
-| `<leader>e` | n | Open the file explorer |
 
 ## Quickfix and location list
 
@@ -27,6 +26,27 @@ Leader is space. Mode is `n` for normal, `v` for visual, `x` for visual without 
 |---|---|
 | `<C-k>` / `<C-j>` | Next or previous quickfix item |
 | `<leader>k` / `<leader>j` | Next or previous location list item |
+
+## File tree
+
+| Key | What it does |
+|---|---|
+| `<leader>e` | Open or close the file tree |
+| `<leader>nf` | Open the tree at the current file |
+| `<leader>nc` | Collapse every folder |
+| `<leader>nr` | Refresh the tree |
+
+Inside the tree:
+
+| Key | What it does |
+|---|---|
+| `<CR>` | Open the file or folder |
+| `<Tab>` | Preview the file without leaving the tree |
+| `%` or `d` | Create a file. End the name with `/` for a folder |
+| `R` | Rename or move, with the full path |
+| `D` | Delete. Asks y/N first |
+| `W` | Collapse every folder |
+| `g?` | Show all the keys |
 
 ## Telescope
 

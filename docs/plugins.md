@@ -12,6 +12,8 @@
 | [blink.cmp](https://github.com/saghen/blink.cmp) | `lsp.lua` | Completion menu |
 | [conform.nvim](https://github.com/stevearc/conform.nvim) | `conform.lua` | Formats with `<leader>=`. Never formats on save |
 | [cloak.nvim](https://github.com/laytan/cloak.nvim) | `cloak.lua` | Shows `*` in place of the values in `.env` files. `:CloakToggle` shows them |
+| [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) | `nvim-tree.lua` | File tree on the left with `<leader>e`. Replaces netrw |
+| [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | `nvim-tree.lua` | File icons in the tree. Your terminal needs a Nerd Font |
 | [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) | `git.lua` | Shows changed lines next to the line numbers |
 | [vim-fugitive](https://github.com/tpope/vim-fugitive) | `git.lua` | Git commands in nvim with `:Git` |
 | [undotree](https://github.com/mbbill/undotree) | `undotree.lua` | Shows the undo history as a tree |
