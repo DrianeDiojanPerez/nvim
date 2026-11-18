@@ -4,8 +4,15 @@ map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 map("n", "J", "mzJ`z")
 
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
+local function half_window(direction)
+    return function()
+        local jump = math.floor(vim.api.nvim_win_get_height(0) / 2)
+        vim.cmd("normal! " .. jump .. direction .. "zz")
+    end
+end
+
+map({ "n", "v" }, "<C-d>", half_window("j"))
+map({ "n", "v" }, "<C-u>", half_window("k"))
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 

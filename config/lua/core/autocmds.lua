@@ -25,7 +25,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
     group = group,
     callback = function(e)
         local opts = { buffer = e.buf }
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "gd", function()
+            vim.lsp.buf.definition({
+                on_list = function(options)
+                    local seen = {}
+                    local items = {}
+                    for _, item in ipairs(options.items) do
+                        local key = item.filename .. ":" .. item.lnum
+                        if not seen[key] then
+                            seen[key] = true
+                            table.insert(items, item)
+                        end
+                    end
+
+                    vim.fn.setqflist({}, " ", { title = options.title, items = items })
+                    if #items == 1 then
+                        vim.cmd("cfirst")
+                    else
+                        vim.cmd("copen")
+                    end
+                end,
+            })
+        end, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
         vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
