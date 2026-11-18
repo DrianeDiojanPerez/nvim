@@ -9,7 +9,7 @@ return {
         indent = { enabled = true },
         input = { enabled = true },
         picker = { enabled = false },
-        notifier = { enabled = true },
+        notifier = { enabled = true, style = "fancy" },
         quickfile = { enabled = true },
         scope = { enabled = true },
         -- Smooth scrolling redraws the screen many times per jump, which lags over SSH.
