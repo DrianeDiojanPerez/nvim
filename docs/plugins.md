@@ -11,7 +11,7 @@
 | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) | `lsp.lua` | Default settings for each server |
 | [blink.cmp](https://github.com/saghen/blink.cmp) | `lsp.lua` | Completion menu |
 | [conform.nvim](https://github.com/stevearc/conform.nvim) | `conform.lua` | Formats with `<leader>=`. Never formats on save |
-| [snacks.nvim](https://github.com/folke/snacks.nvim) | `snacks.lua` | Opens big files fast, start screen, indent guides, and nicer prompts. Smooth scrolling is off because it lags over SSH |
+| [snacks.nvim](https://github.com/folke/snacks.nvim) | `snacks.lua` | Opens big files fast, start screen, indent guides, nicer prompts, and message popups in the top-right. `:lua Snacks.notifier.show_history()` shows past messages. Smooth scrolling is off because it lags over SSH |
 | [cloak.nvim](https://github.com/laytan/cloak.nvim) | `cloak.lua` | Shows `*` in place of the values in `.env` files. `:CloakToggle` shows them |
 | [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) | `nvim-tree.lua` | File tree on the left with `<leader>e`. Replaces netrw |
 | [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) | `nvim-tree.lua` | File icons in the tree. Your terminal needs a Nerd Font |
