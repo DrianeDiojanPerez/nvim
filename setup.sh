@@ -15,9 +15,9 @@ esac
 install_deps() {
     if command -v apt-get >/dev/null; then
         sudo apt-get update
-        sudo apt-get install -y git curl unzip tar gzip ripgrep fd-find build-essential
+        sudo apt-get install -y git curl unzip tar gzip ripgrep fd-find jq build-essential
     else
-        echo "No apt-get found. Install git, curl, unzip, ripgrep and a C compiler yourself."
+        echo "No apt-get found. Install git, curl, unzip, ripgrep, jq and a C compiler yourself."
     fi
 }
 
@@ -61,6 +61,19 @@ link_config() {
     echo "Linked $target to $source"
 }
 
+# Over SSH the terminal is often too slow to answer nvim's color query (E1568).
+set_nottyfast() {
+    local rc
+    case "$(basename "${SHELL:-bash}")" in
+        zsh) rc="$HOME/.zshrc" ;;
+        *) rc="$HOME/.bashrc" ;;
+    esac
+    if ! grep -qs "NVIM_NOTTYFAST" "$rc"; then
+        echo 'export NVIM_NOTTYFAST=1' >> "$rc"
+        echo "Added NVIM_NOTTYFAST=1 to $rc"
+    fi
+}
+
 if [ "${1:-}" != "--config" ]; then
     install_deps
     install_nvim
@@ -68,6 +81,7 @@ if [ "${1:-}" != "--config" ]; then
 fi
 
 link_config
+set_nottyfast
 
-nvim --headless "+Lazy! sync" +qa
+nvim --headless "+Lazy! restore" +qa
 echo "Done. $(nvim --version | head -1)"
