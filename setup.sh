@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Usage: ./setup.sh             install deps, latest nvim, and this config
-#        ./setup.sh --config    only copy the config
+#        ./setup.sh --config    only link the config
 set -euo pipefail
 
-here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 target="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
 
 case "$(uname -m)" in
@@ -44,7 +44,12 @@ install_tree_sitter() {
     tree-sitter --version || echo "tree-sitter CLI failed to run, treesitter parsers will not build."
 }
 
-install_config() {
+link_config() {
+    local source="$here/config"
+    if [ "$(readlink -f "$target")" = "$source" ]; then
+        echo "$target already links to $source"
+        return
+    fi
     if [ -e "$target" ] || [ -L "$target" ]; then
         local backup
         backup="$target.bak.$(date +%Y%m%d%H%M%S)"
@@ -52,8 +57,8 @@ install_config() {
         echo "Moved old config to $backup"
     fi
     mkdir -p "$(dirname "$target")"
-    cp -r "$here/config" "$target"
-    echo "Copied config to $target"
+    ln -s "$source" "$target"
+    echo "Linked $target to $source"
 }
 
 if [ "${1:-}" != "--config" ]; then
@@ -62,7 +67,7 @@ if [ "${1:-}" != "--config" ]; then
     install_tree_sitter
 fi
 
-install_config
+link_config
 
 nvim --headless "+Lazy! sync" +qa
 echo "Done. $(nvim --version | head -1)"
