@@ -52,6 +52,7 @@ These work in files where a language server is running.
 | `<leader>vrr` | n | Find references |
 | `<leader>vrn` | n | Rename |
 | `<leader>vws` | n | Search symbols in the project |
+| `<leader>=` | n, v | Format the file or the selection |
 | `<C-h>` | i | Show function signature |
 
 ## Completion

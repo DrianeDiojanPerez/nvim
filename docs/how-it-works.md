@@ -18,12 +18,20 @@ config/
 
 Space is the leader key.
 
+## Built for a production server
+
+- Plugin versions are pinned in `lazy-lock.json`, so the server only gets versions you tried on your desktop first. See [Updating](update.md#plugin-versions).
+- cloak.nvim hides the values in `.env`, `wrangler.toml`, and `.dev.vars` files.
+- Undo history isn't saved for `.env*`, `*.env`, `*.pem`, `*.key`, `wrangler.toml`, and `.dev.vars` files. Neovim saves undo history as plain text in `~/.local/state/nvim/undo/`, so it would keep old secrets around.
+- `setup.sh` sets `NVIM_NOTTYFAST=1`, which stops the E1568 warning and the slow start over SSH.
+- Only `lua_ls` comes installed, and conform has no formatters that need Node, so Node isn't needed on the server.
+
 ## Where things live
 
 | What | Where |
 |---|---|
 | Config | `~/code/nvim/config`, linked from `~/.config/nvim` |
-| Plugin versions (`lazy-lock.json`) | `~/code/nvim/config/`, ignored by git |
+| Plugin versions (`lazy-lock.json`) | `~/code/nvim/config/`, committed to pin the versions |
 | Plugins | `~/.local/share/nvim/lazy/` |
 | LSP servers from Mason | `~/.local/share/nvim/mason/` |
 | Treesitter parsers | `~/.local/share/nvim/site/parser/` |

@@ -22,13 +22,13 @@ It asks for your sudo password. When it finishes, open `nvim` once and wait a mi
 git -C ~/code/nvim pull
 ```
 
-`~/.config/nvim` links to `~/code/nvim/config`, so the pull updates the config. Run `:Lazy sync` in nvim to update the plugins. See [Updating](docs/update.md) for updating Neovim itself.
+`~/.config/nvim` links to `~/code/nvim/config`, so the pull updates the config. Then run `:Lazy restore` in nvim to move the plugins to the versions in `lazy-lock.json`. See [Updating](docs/update.md) for updating Neovim itself.
 
 ## Manual install
 
 1. Install the tools the plugins need:
    ```
-   sudo apt install git curl unzip tar gzip ripgrep fd-find build-essential
+   sudo apt install git curl unzip tar gzip ripgrep fd-find jq build-essential
    ```
 2. Install the latest Neovim:
    ```
