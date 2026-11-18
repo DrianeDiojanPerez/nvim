@@ -12,6 +12,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     command = [[%s/\s\+$//e]],
 })
 
+-- Undo files keep old versions of the text in plain text, secrets included.
+vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
+    group = group,
+    pattern = { ".env*", "*.env", "*.pem", "*.key", "wrangler.toml", ".dev.vars" },
+    callback = function()
+        vim.opt_local.undofile = false
+    end,
+})
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = group,
     callback = function(e)
