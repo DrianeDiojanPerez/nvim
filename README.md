@@ -19,10 +19,10 @@ It asks for your sudo password. When it finishes, open `nvim` once and wait a mi
 ## Update
 
 ```
-git -C ~/code/nvim pull && ~/code/nvim/setup.sh --config
+git -C ~/code/nvim pull
 ```
 
-Then run `:Lazy sync` in nvim to update the plugins. See [Updating](docs/update.md) for updating Neovim itself.
+`~/.config/nvim` links to `~/code/nvim/config`, so the pull updates the config. Run `:Lazy sync` in nvim to update the plugins. See [Updating](docs/update.md) for updating Neovim itself.
 
 ## Manual install
 
@@ -44,10 +44,10 @@ Then run `:Lazy sync` in nvim to update the plugins. See [Updating](docs/update.
    gunzip tree-sitter-linux-x64.gz
    sudo install -m 755 tree-sitter-linux-x64 /usr/local/bin/tree-sitter
    ```
-4. Copy the config, after moving any old one out of the way:
+4. Link the config, after moving any old one out of the way:
    ```
    mv ~/.config/nvim ~/.config/nvim.bak
-   cp -r ~/code/nvim/config ~/.config/nvim
+   ln -s ~/code/nvim/config ~/.config/nvim
    ```
 5. Open `nvim`. lazy.nvim installs the plugins on the first start.
 

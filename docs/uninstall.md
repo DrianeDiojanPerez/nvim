@@ -1,10 +1,13 @@
 # Uninstall
 
-Remove the config, plugins, and everything Neovim saved:
+Remove the config link, plugins, and everything Neovim saved:
 
 ```
-rm -rf ~/.config/nvim ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
+rm ~/.config/nvim
+rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
 ```
+
+`rm ~/.config/nvim` removes only the link. The config stays in `~/code/nvim` until you delete the repo.
 
 Remove Neovim and the tree-sitter CLI:
 

@@ -1,6 +1,6 @@
 # How it works
 
-The repo holds the config in `config/` and a `setup.sh` that installs everything on a new machine. `setup.sh` copies `config/` to `~/.config/nvim`. It copies the files instead of linking them, so a change in `~/code/nvim` only takes effect after `./setup.sh --config`.
+The repo holds the config in `config/` and a `setup.sh` that installs everything on a new machine. `setup.sh` makes `~/.config/nvim` a link to `~/code/nvim/config`, so nvim reads the config straight from the repo. A change you make in the repo, or pull with `git pull`, takes effect the next time you open nvim.
 
 ```
 config/
@@ -22,7 +22,8 @@ Space is the leader key.
 
 | What | Where |
 |---|---|
-| Config | `~/.config/nvim` |
+| Config | `~/code/nvim/config`, linked from `~/.config/nvim` |
+| Plugin versions (`lazy-lock.json`) | `~/code/nvim/config/`, ignored by git |
 | Plugins | `~/.local/share/nvim/lazy/` |
 | LSP servers from Mason | `~/.local/share/nvim/mason/` |
 | Treesitter parsers | `~/.local/share/nvim/site/parser/` |
