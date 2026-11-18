@@ -8,7 +8,7 @@ Leader is space. Mode is `n` for normal, `v` for visual, `x` for visual without 
 |---|---|---|
 | `J` / `K` | v | Move the selected lines down or up |
 | `J` | n | Join lines and keep the cursor where it was |
-| `<C-d>` / `<C-u>` | n | Half page down or up, cursor centered |
+| `<C-d>` / `<C-u>` | n, v | Move the cursor half the window down or up, centered |
 | `n` / `N` | n | Next or previous search match, centered |
 | `<leader>p` | x | Paste over the selection without losing what you copied |
 | `<leader>y` | n, v | Copy to the system clipboard |
@@ -64,7 +64,7 @@ These work in files where a language server is running.
 
 | Key | Mode | What it does |
 |---|---|---|
-| `gd` | n | Go to definition |
+| `gd` | n | Go to definition. With more than one, lists them in the quickfix window without duplicates |
 | `K` | n | Show docs for the word under the cursor |
 | `<leader>vd` | n | Show the error on this line |
 | `[d` / `]d` | n | Next or previous error |
